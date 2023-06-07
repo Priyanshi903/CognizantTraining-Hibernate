@@ -1,0 +1,38 @@
+package com.cognizant.truyum;
+
+import java.util.List;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+
+import com.cognizant.truyum.dao.MenuItemDao;
+import com.cognizant.truyum.model.MenuItem;
+import com.cognizant.truyum.service.MenuItemService;
+
+/**
+ * Hello world!
+ *
+ */
+
+@SpringBootApplication
+@ComponentScan("com")
+public class App 
+{
+	
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+//        ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-config.xml");
+        ApplicationContext ctx2= SpringApplication.run(App.class, args);
+        
+        MenuItemService menuItemService=(MenuItemService) ctx2.getBean(MenuItemService.class);
+//        MenuItemDao menuItemDao=(MenuItemDao) ctx.getBean("menuItemDao");
+//        List<MenuItem> menuItems=menuItemDao.getMenuItemListAdmin();
+//        menuItems.stream().forEach(menuItem->menuItemService.saveMenuItem(menuItem));
+        
+    }
+}

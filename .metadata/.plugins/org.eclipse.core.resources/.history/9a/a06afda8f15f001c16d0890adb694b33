@@ -1,0 +1,81 @@
+package com.cognizant.truyum;
+
+import java.util.List;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+
+import com.cognizant.truyum.dao.MenuItemDao;
+import com.cognizant.truyum.model.MenuItem;
+import com.cognizant.truyum.service.MenuItemService;
+import com.cognizant.truyum.util.DateUtil;
+
+/**
+ * Hello world!
+ *
+ */
+
+@SpringBootApplication
+@ComponentScan("com")
+public class App 
+{
+private static MenuItemService menuItemService;
+	
+	private static void testAddMenuItems() {
+		
+		menuItemService.addMenuItems(new MenuItem(1, "Sandwich", 99f, true, DateUtil.convertToDate("15/03/2017"),"Main Course", true));	
+		menuItemService.addMenuItems(new MenuItem(2, "Burger", 129f, true, DateUtil.convertToDate("23/12/2017"), "Main Course", false));
+		menuItemService.addMenuItems(new MenuItem(3, "Pizza", 149f, true, DateUtil.convertToDate("21/08/2018"), "Main Course", false));
+		menuItemService.addMenuItems(new MenuItem(4, "French Fries", 57f, false, DateUtil.convertToDate("02/07/2017"), "Starters", true));
+		menuItemService.addMenuItems( new MenuItem(5, "Chocolate Brownie", 32f, true, DateUtil.convertToDate("02/11/2022"), "Dessert", true));
+		
+	}
+	
+	private static void testGetMenuItemListAdmin() {
+		
+        List<MenuItem> list=menuItemService.getMenuItemListAdmin();		
+		list.stream().forEach(System.out::println);
+		
+	}
+
+	private static void testGetMenuItemListCustomer() {
+	
+		List<MenuItem> list=menuItemService.getMenuItemListCustomer();		
+		list.stream().forEach(System.out::println);
+		
+	}
+	
+	private static void testGetMenuItem() {
+	
+		MenuItem mi=menuItemService.getMenuItem();
+        System.out.println(mi);
+		
+	}
+	
+	private static void testModifyMenuItem() {
+		
+		menuItemService.modifyMenuItem();
+
+		//testAddMenuItems();
+		testGetMenuItemListAdmin();
+		//testGetMenuItemListCustomer();
+		//testGetMenuItem();
+		//testModifyMenuItem();
+	}
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+//        ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-config.xml");
+        ApplicationContext ctx2= SpringApplication.run(App.class, args);
+        
+        MenuItemService menuItemService=(MenuItemService) ctx2.getBean(MenuItemService.class);
+//        MenuItemDao menuItemDao=(MenuItemDao) ctx.getBean("menuItemDao");
+//        List<MenuItem> menuItems=menuItemDao.getMenuItemListAdmin();
+//        menuItems.stream().forEach(menuItem->menuItemService.saveMenuItem(menuItem));
+        
+    }
+}

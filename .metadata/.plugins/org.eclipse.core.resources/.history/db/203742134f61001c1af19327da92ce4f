@@ -1,0 +1,21 @@
+package com.cognizant.moviecruiser.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cognizant.moviecruiser.dao.MovieDao;
+import com.cognizant.moviecruiser.model.Movie;
+
+@Service
+public class MovieService {
+	@Autowired
+	private MovieDao movieRepository;
+	
+//	public List<Movie>
+	
+	public String saveMovie(Movie movie) {
+		movieRepository.saveAndFlush(movie);
+		return "Movie Saved";
+	}
+
+}

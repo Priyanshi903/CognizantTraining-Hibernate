@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+		<title>Movie Cruiser</title>
+		<link rel="icon" type="image/ico" href="./images/logo.png" />
+		<link rel="stylesheet" type="text/css" href="./style/style.css">
+		<script src="./js/script.js"></script>
+	</head>
+	<body class="xyz">
+		<header>
+			<span class="header-title">Movie Cruiser</span>
+			<img class="header-logo" src="./images/logo.png" alt="Movie Cruiser Logo"></img>
+			<nav>
+				<a class="nav-link" href="/movies">Movies</a>
+			</nav>
+		</header>
+		<article>
+			<h2 class="article-heading">Save Movie</h2>
+			 <form:form name="editMovieForm"  action="/save-movie-status" modelAttribute="movie" method="post">
+				<table >
+					<tr>
+						<td colspan="4">
+							<label class="form-item" for="field-title">Title</label>
+							<form:input class="form-input" type="text" name="title" id="title" value="Avengers - End Game"/>
+							<form:input path="title" name="title"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<label>Enter Title<label>
+							<form:input path="title" name="title"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<label>Enter Title<label>
+							<form:input path="title" name="title"/>
+						</td>
+					</tr>
+					
+				</table>
+				<tr colspan=4>
+						<td>
+							<input class="form-button" type="submit" name="submit" value="Save"></input>
+						</td>
+					</tr>
+			</form:form> 
+		</article>
+		<footer>
+			<p>Copyright &copy; 2019</p>
+		</footer>
+	</body>
+</html>

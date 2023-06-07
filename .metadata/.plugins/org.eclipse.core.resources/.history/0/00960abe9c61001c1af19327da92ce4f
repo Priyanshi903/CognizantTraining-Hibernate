@@ -1,0 +1,44 @@
+package com.cognizant;
+
+
+
+import java.util.List;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
+import com.cognizant.moviecruiser.model.Movie;
+import com.cognizant.moviecruiser.service.MovieService;
+import com.cognizant.moviecruiser.util.DateUtil;
+
+@SpringBootApplication
+ @ComponentScan("com")
+public class MovieCruiserApplication {
+	private static MovieService movieService;
+	
+	public static void testGetAllMovies() {
+		List<Movie> movies=movieService.allMovies();
+		movies.stream().forEach(System.out::println);
+	}
+
+	public static void testSaveMovie() {
+
+		movieService.saveMovie(new Movie(1,"Avatar","$2,787,965,087",true,DateUtil.convertToDate("15/03/2017"),"Science Fiction",true));
+		movieService.saveMovie(new Movie(2,"The Avengers","$1,518,812,988",true,DateUtil.convertToDate("23/12/2017"),"Superhero",false));
+		movieService.saveMovie(new Movie(3,"Titanic","$2,187,463,944",true,DateUtil.convertToDate("21/08/2017"),"Romance",false));
+		movieService.saveMovie(new Movie(4,"Jurassic World","$1,671,713,208",false,DateUtil.convertToDate("02/07/2017"),"Science Fiction",false));
+		movieService.saveMovie(new Movie(5,"Avengers: End Game","$2,750,760,348",false,DateUtil.convertToDate("02/11/2022"),"Superhero",false));
+
+	}
+
+	public static void main(String[] args) {
+		ApplicationContext context=SpringApplication.run(MovieCruiserApplication.class, args);
+		 movieService=context.getBean(MovieService.class);
+		 testSaveMovie();
+//		 testGetAllMovies();
+		
+	}
+
+}

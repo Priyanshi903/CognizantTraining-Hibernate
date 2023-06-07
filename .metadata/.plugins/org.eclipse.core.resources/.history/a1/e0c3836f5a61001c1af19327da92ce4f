@@ -1,0 +1,81 @@
+package com.cognizant;
+
+import java.util.Date;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+import com.cognizant.moviecruiser.model.Movie;
+
+@SpringBootApplication
+// @ComponentScan("com")
+public class MovieCruiserApplication {
+	public static void testGetAllMovies() {
+
+	}
+
+	public static void testSaveMovie() {
+//		(long id, String title, String boxOffice, boolean active, Date dateOfLaunch,
+//				String genre, boolean hasTeaser)
+		Movie movie=new Movie(1,"Avatar","$2,787,965,087",true,"15/03/2017","Science Fiction",true);
+		
+//		<td class="col-left">Avatar</td>
+//		<td class="col-right">$2,787,965,087</td>
+//		<td>Yes</td>
+//		<td>15/03/2017</td>
+//		<td>Science Fiction</td>
+//		<td>Yes</td>
+//		<td>
+//			<a class="action-link" href="./edit-movie.html">Edit</a>
+//		</td>
+//	</tr>
+//	<tr>
+//		<td class="col-left">The Avengers</td>
+//		<td class="col-right">$1,518,812,988</td>
+//		<td>Yes</td>
+//		<td>23/12/2017</td>
+//		<td>Superhero</td>
+//		<td>No</td>
+//		<td>
+//			<a class="action-link" href="./edit-movie.html">Edit</a>
+//		</td>
+//	</tr>
+//	<tr>
+//		<td class="col-left">Titanic</td>
+//		<td class="col-right">$2,187,463,944</td>
+//		<td>Yes</td>
+//		<td>21/08/2017</td>
+//		<td>Romance</td>
+//		<td>No</td>
+//		<td>
+//			<a class="action-link" href="./edit-movie.html">Edit</a>
+//		</td>
+//	</tr>
+//	<tr>
+//		<td class="col-left">Jurassic World</td>
+//		<td class="col-right">$1,671,713,208</td>
+//		<td>No</td>
+//		<td>02/07/2017</td>
+//		<td>Science Fiction</td>
+//		<td>Yes</td>
+//		<td>
+//			<a class="action-link" href="./edit-movie.html">Edit</a>
+//		</td>
+//	</tr>
+//	<tr>
+//		<td class="col-left">Avengers: End Game</td>
+//		<td class="col-right">$2,750,760,348</td>
+//		<td>Yes</td>
+//		<td>02/11/2022</td>
+//		<td>Superhero</td>
+//		<td>Yes</td>
+//		<td>
+
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(MovieCruiserApplication.class, args);
+	}
+
+}

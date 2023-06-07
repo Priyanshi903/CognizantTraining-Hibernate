@@ -1,0 +1,28 @@
+package com.cognizant.moviecruiser.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.cognizant.moviecruiser.model.Movie;
+import com.cognizant.moviecruiser.service.MovieService;
+
+@Controller
+public class MovieController {
+	@Autowired
+	private MovieService movieService;
+	
+	@RequestMapping("/")
+	public String getAllMovies() {
+		List<Movie> movies=movieService.allMovies();
+		return "movies";
+	}
+	
+	@RequestMapping("/addMovie")
+	public String addMovie() {
+		return "savemovie";
+	}
+
+}

@@ -1,0 +1,48 @@
+package com.cognizant.ormlearn.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
+import com.cognizant.ormlearn.model.Stock;
+import com.cognizant.ormlearn.repository.StockRepository;
+
+@Service
+public class StockService {
+	
+	@Autowired
+	private StockRepository stockRepository;
+	
+	@Transactional
+	public List<Stock> getStockOfMonthYear(String month, int year,String platform) {
+		return null;
+		
+	}
+	
+	@Transactional
+	public List<Stock> getStockGreaterThan(double value){
+		return stockRepository.findByCloseGreaterThan(value);
+	
+	}
+	
+	@Transactional
+	public List<Stock> getHighest3Volume(){
+		Page<Stock> stocks = stockRepository.findTop3ByVolume( PageRequest.of(0, 25));
+		List<Stock> s = stocks.getContent();
+//		return stockRepository.findTop3ByVolume();
+		return s;
+	}
+	
+	@Transactional
+	public List<Stock> getLowestNVolumeOf(String platform,int n){
+		return null;
+		
+	}
+	
+
+}

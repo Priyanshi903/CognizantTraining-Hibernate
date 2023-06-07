@@ -1,0 +1,24 @@
+package com.cognizant.truyum;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+
+import com.cognizant.truyum.service.MenuItemService;
+
+/**
+ * Hello world!
+ *
+ */
+@ComponentScan("com")
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+//        ApplicationContext ctx=new ClassPathXmlApplicationContext();
+//        MenuItemService menuItemService=(MenuItemService) ctx.getBean("MenuItemService.class");
+//        menuItemService.saveMenuItem(menuItem);
+    }
+}

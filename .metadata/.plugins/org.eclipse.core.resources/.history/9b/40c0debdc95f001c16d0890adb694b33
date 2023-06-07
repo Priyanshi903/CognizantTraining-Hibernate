@@ -1,0 +1,73 @@
+package com.cognizant.truyum;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
+import com.cognizant.truyum.model.MenuItem;
+import com.cognizant.truyum.service.MenuItemService;
+import com.cognizant.truyum.util.DateUtil;
+
+@SpringBootApplication
+@ComponentScan("com")
+public class TruYumSpringJpaApplication {
+	
+	
+	private static final Logger LOGGER=LoggerFactory.getLogger(TruYumSpringJpaApplication.class);
+	private static MenuItemService menuItemService;
+	
+	private static void testAddMenuItems() {
+		LOGGER.info("Start");
+		menuItemService.addMenuItems(new MenuItem(1, "Sandwich", 99f, true, DateUtil.convertToDate("15/03/2017"),"Main Course", true));	
+		menuItemService.addMenuItems(new MenuItem(2, "Burger", 129f, true, DateUtil.convertToDate("23/12/2017"), "Main Course", false));
+		menuItemService.addMenuItems(new MenuItem(3, "Pizza", 149f, true, DateUtil.convertToDate("21/08/2018"), "Main Course", false));
+		menuItemService.addMenuItems(new MenuItem(4, "French Fries", 57f, false, DateUtil.convertToDate("02/07/2017"), "Starters", true));
+		menuItemService.addMenuItems( new MenuItem(5, "Chocolate Brownie", 32f, true, DateUtil.convertToDate("02/11/2022"), "Dessert", true));
+		LOGGER.info("End");
+	}
+	
+	private static void testGetMenuItemListAdmin() {
+		LOGGER.info("Start");
+        List<MenuItem> list=menuItemService.getMenuItemListAdmin();		
+		list.stream().forEach(System.out::println);
+		LOGGER.info("End");
+	}
+
+	private static void testGetMenuItemListCustomer() {
+		LOGGER.info("Start");
+		List<MenuItem> list=menuItemService.getMenuItemListCustomer();		
+		list.stream().forEach(System.out::println);
+		LOGGER.info("End");
+	}
+	
+	private static void testGetMenuItem() {
+		LOGGER.info("Start");
+		MenuItem mi=menuItemService.getMenuItem();
+        System.out.println(mi);
+		LOGGER.info("End");
+	}
+	
+	private static void testModifyMenuItem() {
+		LOGGER.info("Start");
+		menuItemService.modifyMenuItem();
+		LOGGER.info("End");
+	}
+	
+	public static void main(String[] args) {
+		ApplicationContext ctx=SpringApplication.run(TruYumSpringJpaApplication.class, args);
+		menuItemService=(MenuItemService)ctx.getBean("menuItemService");
+		
+		//testAddMenuItems();
+		testGetMenuItemListAdmin();
+		//testGetMenuItemListCustomer();
+		//testGetMenuItem();
+		//testModifyMenuItem();
+		
+	}
+
+}

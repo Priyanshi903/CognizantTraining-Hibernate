@@ -1,0 +1,15 @@
+package com.cognizant.ormlearn.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.cognizant.ormlearn.model.Department;
+
+public interface DepartmentRepository extends JpaRepository<Department, Integer> {
+	@Query(value="select * from department d inner join employee e on e.em_dp_id=d.dp_id group by e.em_dp_id having count(*)>1"
+			,nativeQuery=true)
+	public List<Department> getDepartmentHavingEmployeeGreaterThan1();
+
+}
